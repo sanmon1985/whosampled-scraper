@@ -6,7 +6,11 @@ import { WhoSampledService } from '../common/whosampled.service';
 export class ArtistsService {
   constructor(private wsService: WhoSampledService) {}
 
-  async getArtistConnections(name: string, pageNum = '1') {
-    return await this.wsService.getArtistConnections(name, pageNum);
+  async getCovers(name: string, page = '1') {
+    return await this.wsService.getCovers(name, page);
+  }
+
+  async getCovered(name: string, page = '1') {
+    return await this.wsService.getCovered(name, page);
   }
 }

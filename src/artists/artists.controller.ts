@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 
 import { ArtistsService } from './artists.service';
 
@@ -6,11 +6,19 @@ import { ArtistsService } from './artists.service';
 export class ArtistsController {
   constructor(private artService: ArtistsService) {}
 
-  @Get([':name', ':name/:page'])
-  async getArtistConnections(
+  @Get(':name/covers')
+  async getCovers(
     @Param('name') name: string,
-    @Param('page') pageNum = '1',
+    @Query('page') page = '1',
   ) {
-    return await this.artService.getArtistConnections(name, pageNum);
+    return await this.artService.getCovers(name, page);
+  }
+
+  @Get(':name/covered')
+  async getCovered(
+    @Param('name') name: string,
+    @Query('page') page = '1',
+  ) {
+    return await this.artService.getCovered(name, page);
   }
 }

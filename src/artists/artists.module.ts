@@ -6,5 +6,6 @@ import { WhoSampledService } from '../common/whosampled.service'
 @Module({
   controllers: [ArtistsController],
   providers: [ArtistsService, WhoSampledService],
+  exports: [WhoSampledService],
 })
 export class ArtistsModule {}
